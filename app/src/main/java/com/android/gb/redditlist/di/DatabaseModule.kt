@@ -22,7 +22,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             RedditDatabase::class.java,
-            "Movies.db"
+            "Reddit.db"
         ).build()
     }
 
