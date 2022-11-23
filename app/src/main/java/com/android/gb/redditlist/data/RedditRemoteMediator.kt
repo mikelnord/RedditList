@@ -46,10 +46,7 @@ class RedditRemoteMediator @Inject constructor(
             val data = service.getHotList(
                 after = loadKey,
                 before = null,
-                limit = when (loadType) {
-                    LoadType.REFRESH -> state.config.initialLoadSize
-                    else -> state.config.pageSize
-                }
+                limit = state.config.pageSize
             ).data
 
             val items = data.children.map { it.data }
@@ -60,7 +57,7 @@ class RedditRemoteMediator @Inject constructor(
                     remoteKeyDao.clearRemoteKeys()
                 }
 
-                remoteKeyDao.insert(RemoteKeys(data.after))
+                remoteKeyDao.insert(RemoteKeys(nextPageKey = data.after))
                 postDao.insertAll(items)
             }
 

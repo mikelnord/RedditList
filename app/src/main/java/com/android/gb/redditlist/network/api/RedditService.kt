@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface RedditService {
 
-    @GET("r/hot.json")
+    @GET("hot.json")
     suspend fun getHotList(
         @Query("limit") limit: Int,
         @Query("after") after: String? = null,

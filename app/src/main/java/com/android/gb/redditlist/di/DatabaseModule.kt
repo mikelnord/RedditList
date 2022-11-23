@@ -18,7 +18,7 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideMoviesDatabase(@ApplicationContext appContext: Context): RedditDatabase {
+    fun provideRedditDatabase(@ApplicationContext appContext: Context): RedditDatabase {
         return Room.databaseBuilder(
             appContext,
             RedditDatabase::class.java,
